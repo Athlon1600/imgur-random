@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://imgur.com">
+    <link rel="preconnect" href="https://s.imgur.com">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="referrer" content="no-referrer"/>
+
+    <link rel="stylesheet" href="/assets/styles.css">
+
+    <link rel="icon" type="image/png" href="https://s.imgur.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://s.imgur.com/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://s.imgur.com/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="description"
+          content="Discover random images from Imgur. Find unseen images that typically do not appear on Reddit or Imgur homepage">
+    <meta name="keywords"
+          content="imgur, imgur random images, imgur random image generator, random images, random photos, random pictures">
+    <title>Random Images from Imgur - Find interesting and less seen images</title>
+
+</head>
+<body>
+
+<header>
+
+    <div class="header-primary">
+        <div class="header-left" style="text-align: left;">
+            <h2 class="logo">Imgur Random Images</h2>
+        </div>
+
+        <div class="header-center visible-lg">
+            Find interesting and less seen images by randomly scanning
+            <code class="url-tag">imgur.com/{id}</code> namespace
+        </div>
+
+        <div class="header-right visible-lg disclaimer">
+            <span class="red">&#10084;</span> We are not affiliated with Imgur, but we love what they do
+        </div>
+    </div>
+
+    <div class="header-bottom visible-lg">
+
+        <div>
+            <span>📡 Total Requests:</span> <span id="span_rc" class="stats-number" style="min-width: 3ch">0</span>
+            <span class="spacer"></span>
+
+            <span>📷 Images Found:</span>
+
+            <div style="min-width: 8ch; display: inline-block">
+                <span id="span_ic" class="stats-number">0</span>
+                (<span class="font-weight-bold percent" id="found_percent">32%</span>)
+            </div>
+
+            <span class="spacer"></span>
+
+            <span>🧹 Filtered:</span> <span id="num_filtered" class="stats-number">12</span>
+        </div>
+
+        <div>
+            <a href="https://github.com/Athlon1600/imgur-random" target="_blank">GitHub Source Code</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div id="images" class="grid">
+    </div>
+
+    <div class="loading-block">
+        <h2>🚀 Loading more images...</h2>
+    </div>
+</main>
+
+<script src="/assets/app.js"></script>
+
+</body>
+</html>
+

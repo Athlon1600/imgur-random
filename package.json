@@ -1,0 +1,34 @@
+{
+  "name": "imgur-random",
+  "version": "0.1.0",
+  "description": "Simple website for finding random images from Imgur",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf node_modules package-lock.json",
+    "lint": "eslint ./src/js",
+    "serve": "live-server --cors ./public",
+    "watch": "node watch.js",
+    "build": "node build.js",
+    "dev": "concurrently \"npm run serve\" \"npm run watch\" ",
+    "netlify:preview": "npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=./public",
+    "netlify:production": "npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --dir=./public"
+  },
+  "keywords": [],
+  "author": "Athlon1600",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "chokidar": "^4.0.3",
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.25.10",
+    "eslint": "^9.36.0",
+    "globals": "^16.4.0",
+    "live-server": "^1.2.2",
+    "modern-normalize": "^3.0.1",
+    "rimraf": "^6.0.1"
+  },
+  "dependencies": {
+    "debounce": "^2.2.0",
+    "mousetrap": "^1.6.5"
+  }
+}

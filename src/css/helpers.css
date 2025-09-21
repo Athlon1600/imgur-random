@@ -1,0 +1,22 @@
+
+.spacer {
+    padding: 0 0.5rem;
+}
+
+.visible-lg {
+    display: none;
+}
+
+@media (min-width: 1280px) {
+    .visible-lg {
+        display: block;
+    }
+}
+
+.red {
+    color: red;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}

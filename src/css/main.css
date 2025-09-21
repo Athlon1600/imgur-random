@@ -1,0 +1,25 @@
+@import "modern-normalize/modern-normalize.css";
+@import "base.css";
+@import "helpers.css";
+@import "header.css";
+@import "dropdown.css";
+@import "grid.css";
+
+main {
+    max-width: max(90vw, 1280px);
+    margin: 0 auto;
+}
+
+.loading-block {
+    text-align: center;
+    color: white;
+}
+
+span.percent {
+    color: #00BCD4;
+}
+
+.stats-number {
+    display: inline-block;
+    font-weight: bold;
+}

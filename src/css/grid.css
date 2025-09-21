@@ -1,0 +1,32 @@
+#images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7em; /* space between blocks */
+}
+
+#images figure {
+    margin: 0;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#images figure:hover {
+    transform: scale(1.04);
+}
+
+#images figure img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#images img:hover {
+    transform: scale(1.04);
+    background-color: rgba(161, 156, 156, 0.582);
+    opacity: 0.8;
+}
