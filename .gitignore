@@ -3,6 +3,7 @@ node_modules
 .env
 public/index.html
 public/assets
+!.gitkeep
 
 # Local Netlify folder
 .netlify
