@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Preview
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         run: npm run netlify:preview
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
