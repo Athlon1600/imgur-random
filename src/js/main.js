@@ -4,6 +4,7 @@ import {Shortcuts} from "./Shortcuts";
 import {afterPaintAsync} from "./util/dom";
 import {ImageGrid} from "./ui/ImageGrid";
 import {BufferSizeManager} from "./services/BufferSizeManager";
+import {appConfig} from "./appConfig";
 
 let _app = (function () {
 
@@ -35,7 +36,7 @@ let _app = (function () {
 
     const isImageValidSize = (width, height) => {
         const aspectRatio = width / height;
-        return (width >= 300 && height >= 300) && (aspectRatio <= 3.0 && aspectRatio >= 0.33);
+        return (width >= appConfig.getMinimumImageWidth() && height >= 300) && (aspectRatio <= 3.0 && aspectRatio >= 0.33);
     }
 
     async function find(imageCount) {

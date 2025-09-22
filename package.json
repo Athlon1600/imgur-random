@@ -8,7 +8,7 @@
     "lint": "eslint ./src/js",
     "serve": "live-server --cors ./public",
     "watch": "node esbuild.js --watch",
-    "build": "node esbuild.js --production",
+    "build": "node esbuild.js --prod",
     "dev": "concurrently \"npm run serve\" \"npm run watch\" ",
     "netlify:preview": "npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=./public",
     "netlify:production": "npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --dir=./public"
