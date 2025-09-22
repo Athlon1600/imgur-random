@@ -9,7 +9,7 @@ A simple web-app that finds random images on Imgur.com,
 and displays them in a typical grid layout with infinite scrolling.
 
 It works by rapidly scanning `imgur.com/{id}` namespace - where `{id}`
-is a randomly generated 5-character alphanumeric string - and checking to see if an image exists for that particular ID.
+is a randomly generated 5-character alphanumeric string - and checks to see if an image exists for that particular ID.
 
 The entire application is a single `index.html` file with some
 plain old Javascript on top of it - zero frameworks. Everything is compiled using esbuild.
@@ -17,6 +17,8 @@ plain old Javascript on top of it - zero frameworks. Everything is compiled usin
 ## :star: Demo
 
 - https://imgur-random.netlify.app/
+
+![](public/website.jpeg)
 
 ## :computer: Development
 
@@ -51,11 +53,11 @@ that will generate all the files that you need, and copy them in the `./public` 
 Now you can copy the contents of the `./public` directory to any web-server
 that is capable of serving static files - and you are done!
 
-Demo version of this app is hosted on **Netlify**.
+Demo version of this app is hosted on **Netlify** - all for free.
 You can do the same by following these steps:
 
 - create an account on Netlify
-- create a new site
+- add a new site (or Project)
 - find your "Site ID" (or "Project ID)
 - create a new token (https://app.netlify.com/user/applications#personal-access-tokens)
 
@@ -65,8 +67,8 @@ Once you have those two values, go to `package.json` of this project to find thi
 npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --dir=./public
 ```
 
-replace those two variables for `--site` and `--auth` with your site id and your token,
-and run that command yourself.
+replace those two variables for `--site` and `--auth` with your own site id and token,
+and then run that command yourself.
 
 ## To-Do List
 

@@ -3,6 +3,7 @@ import {ImageFindingService} from "./services/ImageFindingService";
 import {Shortcuts} from "./Shortcuts";
 import {afterPaintAsync} from "./util/dom";
 import {ImageGrid} from "./ui/ImageGrid";
+import {BufferSizeManager} from "./services/BufferSizeManager";
 
 let _app = (function () {
 
@@ -20,7 +21,7 @@ let _app = (function () {
 
     setInterval(() => {
 
-        spanRc.innerHTML = errorCounter;
+        spanRc.innerHTML = (successCounter + errorCounter + filteredCount);
         spanIc.innerHTML = successCounter;
         spanFiltered.textContent = filteredCount;
 
@@ -32,33 +33,15 @@ let _app = (function () {
 
     }, 150);
 
-    // if user already scrolled ALMOST to the bottom - load more images
-    // TODO: replace with IntersectionObserver API
-    const shouldLoadMore = () => {
-
-        // TODO: make this percentage based maybe? example if over 80% of viewport already scrolled
-        const maxPixelsFromTheBottom = 400;
-
-        const BUFFER_MULTIPLIER = 3;
-        const viewportHeight = (window.innerHeight * BUFFER_MULTIPLIER);
-
-        return getRemainingScrollHeight() < viewportHeight;
-    }
-
     const isImageValidSize = (width, height) => {
         const aspectRatio = width / height;
         return (width >= 300 && height >= 300) && (aspectRatio <= 3.0 && aspectRatio >= 0.33);
     }
 
-    async function find(imageCount = 30) {
+    async function find(imageCount) {
 
-        /**
-         *
-         * @type {*[]}
-         */
         const urls = await ImageFindingService.findMultiple(imageCount, {
             threadCount: imageCount,
-            msBetweenRequests: 1000,
             /** @param {{url: string, width: number, height: number}} foundImage */
             onSuccess(foundImage) {
 
@@ -86,19 +69,34 @@ let _app = (function () {
         pause();
     });
 
+    // should have AT LEAST 3 screens worth of images - up to 5 screens
+    const buffer = new BufferSizeManager(
+        window.innerHeight * 3,
+        window.innerHeight * 5
+    );
+
+    setInterval(() => {
+        buffer.update(getRemainingScrollHeight());
+    }, 1000);
+
     (async () => {
 
         while (true) {
             await afterPaintAsync(50);
 
-            if (!isPaused && shouldLoadMore()) {
-                await find();
+            const imageCount = 30;
+
+            if (getRemainingScrollHeight() < buffer.getTargetSize()) {
+
+                if (!isPaused) {
+                    await find(imageCount);
+                }
             }
         }
 
     })();
 
-    return {pause};
+    return {pause, getRemainingScrollHeight};
 
 })();
 

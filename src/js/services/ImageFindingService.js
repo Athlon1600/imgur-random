@@ -90,8 +90,6 @@ export const ImageFindingService = (() => {
         // reasonable defaults
         const defaultOptions = {
             threadCount: 6, // If using HTTP/1.1, 6 is max. 20 more reasonable
-            msBetweenRequests: 1000,
-            randomImageIdLength: 5,
             onSuccess: null,
             onError: null,
             onDone: null
