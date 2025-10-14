@@ -1,5 +1,6 @@
 import {createElementFromString} from "../util";
 import {ReverseImageSearch} from "../services/ReverseImageSearch";
+import {saveAs} from "../util/saveAs";
 
 const html = `
 
@@ -7,6 +8,8 @@ const html = `
     <a href="#"  target="_blank" class="link-imgur">Open on Imgur</a>
     <a href="#"  target="_blank" class="link-reverse-google">Reverse search (Google)</a>
     <a href="#" target="_blank" class="link-reverse-yandex">Reverse search (Yandex)</a>
+    <hr>
+    <a href="#" class="action-save-as" download>Image Save As...</a>
 </div>
 
 `;
@@ -16,6 +19,15 @@ export function ImageContextMenu() {
     /** @type {HTMLDivElement} */
     const element = createElementFromString(html);
     document.body.appendChild(element);
+
+    element.querySelector('.action-save-as').addEventListener('click', (evt) => {
+        evt.preventDefault();
+
+        const imageUrl = element.querySelector('.link-imgur')?.getAttribute('href');
+        saveAs(imageUrl).catch((err) => {
+            alert("Error: " + err);
+        })
+    })
 
     /**
      *
