@@ -9,7 +9,7 @@ const html = `
     <a href="#"  target="_blank" class="link-reverse-google">Reverse search (Google)</a>
     <a href="#" target="_blank" class="link-reverse-yandex">Reverse search (Yandex)</a>
     <hr>
-    <a href="#" class="action-save-as" download>Image Save As...</a>
+    <a href="#" class="action-save-as" download>Save Image As...</a>
 </div>
 
 `;
