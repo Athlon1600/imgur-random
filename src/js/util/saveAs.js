@@ -39,6 +39,18 @@ function mimeTypeToFilename(blobMimeType) {
     return null;
 }
 
+function filenameFromUrl(contentUrl) {
+    const u = new URL(contentUrl);
+
+    try {
+        return u.pathname.split("/").pop();
+    } catch (e) {
+
+    }
+
+    return null;
+}
+
 const hasFSAccess = ('showOpenFilePicker' in window);
 const isMac = navigator.userAgent.includes('Mac OS X');
 
@@ -48,9 +60,13 @@ export const saveAs = async (imageUrl, filename = null) => {
     const blob = await response.blob();
 
     if (filename === null) {
-        filename = mimeTypeToFilename(blob.type);
+        filename = filenameFromUrl(imageUrl);
+
+        if (filename === null) {
+        }
     }
 
+    // chrome only
     if (hasFSAccess) {
 
         try {
